@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Appbar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -52,6 +52,17 @@ export default function Header(props) {
   const handleChange = (e, value) => {
     setValue(value);
   };
+  useEffect(() => {
+    const pathname = {
+      "/": 0,
+      "/services": 1,
+      "/revolution": 2,
+      "/about": 3,
+      "/contact": 4,
+    };
+    console.log(pathname[window.location.pathname], window.location.pathname);
+    setValue(pathname[window.location.pathname]);
+  }, []);
 
   return (
     <>
