@@ -23,7 +23,7 @@ export default createTheme({
       fontWeight: 700,
       fontSize: "1rem",
     },
-    extimate: {
+    estimate: {
       fontFamily: "Pacifico",
       fontSize: "1rem",
       textTransform: "none",
