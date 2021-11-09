@@ -29,6 +29,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     height: "7em",
   },
+  logoContainer: {
+    padding: 0,
+    "&:hover": {
+      backgroundColor: "transparent",
+    },
+  },
   tabContainer: {
     marginLeft: "auto",
   },
@@ -71,7 +77,15 @@ export default function Header(props) {
           <Toolbar disableGutters>
             {/* toolbar makes the words go horizontally instead of on top of each other */}
             {/* <Typography variant="h3">Arc Development</Typography> */}
-            <img src={logo} alt="company logo" className={classes.logo} />
+            <Button
+              disableRipple
+              component={Link}
+              to="/"
+              className={classes.logoContainer}
+              onClick={() => setValue(0)}
+            >
+              <img src={logo} alt="company logo" className={classes.logo} />
+            </Button>
             <Tabs
               value={value}
               onChange={handleChange}
