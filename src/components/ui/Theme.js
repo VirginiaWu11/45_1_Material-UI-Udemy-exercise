@@ -1,6 +1,6 @@
 import { createTheme } from "@material-ui/core/styles";
 
-const arcBlue = "#66e3ff";
+const arcBlue = "#0B7289";
 const arcOrange = "#FFBA60";
 
 export default createTheme({
@@ -14,6 +14,11 @@ export default createTheme({
     },
     secondary: {
       main: `${arcOrange}`,
+    },
+  },
+  typography: {
+    h3: {
+      fontWeight: 300,
     },
   },
 });
