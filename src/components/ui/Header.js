@@ -7,6 +7,7 @@ import { makeStyles } from "@material-ui/styles";
 import logo from "../../assets/logo.svg";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Button from "@material-ui/core/Button";
 
 function ElevationScroll(props) {
   const { children } = props;
@@ -35,6 +36,16 @@ const useStyles = makeStyles((theme) => ({
     minWidth: 10,
     marginLeft: "25px",
   },
+  button: {
+    borderRadius: "50px",
+    marginLeft: "50px",
+    marginRight: "50px",
+    fontFamily: "Pacifico",
+    fontSize: "1rem",
+    textTransform: "none",
+    height: "45px",
+    color: "white",
+  },
 }));
 
 export default function Header(props) {
@@ -45,6 +56,7 @@ export default function Header(props) {
       <ElevationScroll>
         <Appbar position="fixed" color="primary">
           <Toolbar disableGutters>
+            {/* toolbar makes the words go horizontally instead of on top of each other */}
             {/* <Typography variant="h3">Arc Development</Typography> */}
             <img src={logo} alt="company logo" className={classes.logo} />
             <Tabs className={classes.tabContainer}>
@@ -54,6 +66,13 @@ export default function Header(props) {
               <Tab className={classes.tab} label="About Us" />
               <Tab className={classes.tab} label="Contact Us" />
             </Tabs>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+            >
+              Free Estimate
+            </Button>
           </Toolbar>
         </Appbar>
       </ElevationScroll>
