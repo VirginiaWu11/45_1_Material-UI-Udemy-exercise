@@ -81,8 +81,15 @@ export default function Header(props) {
       "/revolution": 2,
       "/about": 3,
       "/contact": 4,
+      "/computersoftware": 1,
+      "/mobileapps": 1,
+      "/websites": 1,
     };
-    setValue(pathname[window.location.pathname]);
+    setValue(
+      pathname.hasOwnProperty(window.location.pathname)
+        ? pathname[window.location.pathname]
+        : 0
+    );
   }, []);
 
   return (
@@ -118,7 +125,7 @@ export default function Header(props) {
                 aria-haspopup={anchorEl ? "true" : undefined}
                 className={classes.tab}
                 component={Link}
-                onClick={handleClick}
+                onMouseOver={handleClick}
                 to="/services"
                 label="Services"
               />
@@ -153,12 +160,48 @@ export default function Header(props) {
               anchorEl={anchorEl}
               open={open}
               onClose={handleClose}
+              MenuListProps={{ onMouseLeave: handleClose }} //close the menu when no longer hovering
             >
-              <MenuItem onClick={handleClose}>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/services"
+              >
+                Services
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/customsoftware"
+              >
                 Custom Software Development
               </MenuItem>
-              <MenuItem onClick={handleClose}>Mobile App Development</MenuItem>
-              <MenuItem onClick={handleClose}>Website Development</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/mobileapps"
+              >
+                Mobile App Development
+              </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  handleClose();
+                  setValue(1);
+                }}
+                component={Link}
+                to="/websites"
+              >
+                Website Development
+              </MenuItem>
             </Menu>
           </Toolbar>
         </Appbar>
