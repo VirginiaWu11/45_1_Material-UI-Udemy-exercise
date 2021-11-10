@@ -101,18 +101,23 @@ export default function Header(props) {
 
   useEffect(() => {
     const pathname = {
-      "/": 0,
-      "/services": 1,
-      "/revolution": 2,
-      "/about": 3,
-      "/contact": 4,
-      "/computersoftware": 1,
-      "/mobileapps": 1,
-      "/websites": 1,
+      "/": { value: 0 },
+      "/services": { value: 1, selectedIndex: 0 },
+      "/computersoftware": { value: 1, selectedIndex: 1 },
+      "/mobileapps": { value: 1, selectedIndex: 2 },
+      "/websites": { value: 1, selectedIndex: 3 },
+      "/revolution": { value: 2 },
+      "/about": { value: 3 },
+      "/contact": { value: 4 },
     };
     setValue(
       pathname.hasOwnProperty(window.location.pathname)
-        ? pathname[window.location.pathname]
+        ? pathname[window.location.pathname].value
+        : 0
+    );
+    setSelectedIndex(
+      pathname.hasOwnProperty(window.location.pathname)
+        ? pathname[window.location.pathname].selectedIndex
         : 0
     );
   }, []);
