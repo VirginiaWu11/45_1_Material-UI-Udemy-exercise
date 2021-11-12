@@ -91,9 +91,13 @@ const useStyles = makeStyles((theme) => ({
   drawerItem: {
     ...theme.typography.tab,
     color: "white",
+    opacity: 0.7,
   },
   drawerItemEstimate: {
     backgroundColor: theme.palette.common.orange,
+  },
+  drawerItemSelected: {
+    opacity: 1,
   },
 }));
 
@@ -240,7 +244,11 @@ export default function Header(props) {
       >
         <List disablePadding>
           <ListItem
-            className={classes.drawerItem}
+            className={
+              value === 0
+                ? [classes.drawerItem, classes.drawerItemSelected]
+                : classes.drawerItem
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(0);
@@ -255,7 +263,11 @@ export default function Header(props) {
             <ListItemText>Home</ListItemText>
           </ListItem>
           <ListItem
-            className={classes.drawerItem}
+            className={
+              value === 1
+                ? [classes.drawerItem, classes.drawerItemSelected]
+                : classes.drawerItem
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(1);
@@ -270,7 +282,11 @@ export default function Header(props) {
             <ListItemText>Services</ListItemText>
           </ListItem>
           <ListItem
-            className={classes.drawerItem}
+            className={
+              value === 2
+                ? [classes.drawerItem, classes.drawerItemSelected]
+                : classes.drawerItem
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(2);
@@ -285,7 +301,11 @@ export default function Header(props) {
             <ListItemText>The Revolution</ListItemText>
           </ListItem>
           <ListItem
-            className={classes.drawerItem}
+            className={
+              value === 3
+                ? [classes.drawerItem, classes.drawerItemSelected]
+                : classes.drawerItem
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(3);
@@ -300,7 +320,11 @@ export default function Header(props) {
             <ListItemText>About Us</ListItemText>
           </ListItem>
           <ListItem
-            className={classes.drawerItem}
+            className={
+              value === 4
+                ? [classes.drawerItem, classes.drawerItemSelected]
+                : classes.drawerItem
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(4);
@@ -315,7 +339,15 @@ export default function Header(props) {
             <ListItemText>Contact Us</ListItemText>
           </ListItem>
           <ListItem
-            className={[classes.drawerItem, classes.drawerItemEstimate]}
+            className={
+              value === 5
+                ? [
+                    classes.drawerItem,
+                    classes.drawerItemSelected,
+                    classes.drawerItemEstimate,
+                  ]
+                : [classes.drawerItem, classes.drawerItemEstimate]
+            }
             onClick={() => {
               setOpenDrawer(false);
               setValue(5);
@@ -327,7 +359,19 @@ export default function Header(props) {
             to="/estimate"
             selected={value === 5}
           >
-            <ListItemText>Free Estimate</ListItemText>
+            <ListItemText
+              className={
+                value === 5
+                  ? [
+                      classes.drawerItem,
+                      classes.drawerItemSelected,
+                      classes.drawerItemEstimate,
+                    ]
+                  : [classes.drawerItem, classes.drawerItemEstimate]
+              }
+            >
+              Free Estimate
+            </ListItemText>
           </ListItem>
         </List>
       </SwipeableDrawer>
