@@ -268,6 +268,17 @@ export default function Header(props) {
             button
             disableTypography
             component={Link}
+            to="/revolution"
+          >
+            <ListItemText>The Revolution</ListItemText>
+          </ListItem>
+          <ListItem
+            className={classes.drawerItem}
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            disableTypography
+            component={Link}
             to="/about"
           >
             <ListItemText>About Us</ListItemText>
