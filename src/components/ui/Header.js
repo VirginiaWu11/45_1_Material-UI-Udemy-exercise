@@ -228,10 +228,18 @@ export default function Header(props) {
         onOpen={() => setOpenDrawer(true)}
       >
         <List disablePadding>
-          <ListItem divider button disableTypography component={Link} to="/">
+          <ListItem
+            onClick={() => setOpenDrawer(false)}
+            divider
+            button
+            disableTypography
+            component={Link}
+            to="/"
+          >
             <ListItemText>Home</ListItemText>
           </ListItem>
           <ListItem
+            onClick={() => setOpenDrawer(false)}
             divider
             button
             disableTypography
@@ -241,6 +249,7 @@ export default function Header(props) {
             <ListItemText>Services</ListItemText>
           </ListItem>
           <ListItem
+            onClick={() => setOpenDrawer(false)}
             divider
             button
             disableTypography
@@ -250,6 +259,7 @@ export default function Header(props) {
             <ListItemText>About Us</ListItemText>
           </ListItem>
           <ListItem
+            onClick={() => setOpenDrawer(false)}
             divider
             button
             disableTypography
@@ -259,6 +269,7 @@ export default function Header(props) {
             <ListItemText>Contact Us</ListItemText>
           </ListItem>
           <ListItem
+            onClick={() => setOpenDrawer(false)}
             divider
             button
             disableTypography
