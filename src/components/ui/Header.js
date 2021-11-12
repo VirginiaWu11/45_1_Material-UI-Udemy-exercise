@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Appbar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
@@ -133,35 +133,78 @@ export default function Header(props) {
     setOpenMenu(false);
   };
 
-  const menuOptions = [
-    { name: "Services", link: "/services" },
-    { name: "Custom Software Development", link: "/customsoftware" },
-    { name: "Mobile App Development", link: "/mobileapps" },
-    { name: "Website Development", link: "/websites" },
-  ];
+  const menuOptions = useMemo(
+    () => [
+      { name: "Services", link: "/services", activeIndex: 1, selectedIndex: 0 },
+      {
+        name: "Custom Software Development",
+        link: "/customsoftware",
+        activeIndex: 1,
+        selectedIndex: 1,
+      },
+      {
+        name: "Mobile App Development",
+        link: "/mobileapps",
+        activeIndex: 1,
+        selectedIndex: 2,
+      },
+      {
+        name: "Website Development",
+        link: "/websites",
+        activeIndex: 1,
+        selectedIndex: 3,
+      },
+    ],
+    []
+  );
 
+  const routes = useMemo(
+    () => [
+      { name: "Home", link: "/", activeIndex: 0 },
+      { name: "Services", link: "/services", activeIndex: 1 },
+      { name: "The Revolution", link: "/revolution", activeIndex: 2 },
+      { name: "About Us", link: "/about", activeIndex: 3 },
+      { name: "Contact Us", link: "/contact", activeIndex: 4 },
+    ],
+    []
+  );
   useEffect(() => {
-    const pathname = {
-      "/": { value: 0 },
-      "/services": { value: 1, selectedIndex: 0 },
-      "/computersoftware": { value: 1, selectedIndex: 1 },
-      "/mobileapps": { value: 1, selectedIndex: 2 },
-      "/websites": { value: 1, selectedIndex: 3 },
-      "/revolution": { value: 2 },
-      "/about": { value: 3 },
-      "/contact": { value: 4 },
-    };
-    setValue(
-      pathname.hasOwnProperty(window.location.pathname)
-        ? pathname[window.location.pathname].value
-        : 0
-    );
-    setSelectedIndex(
-      pathname.hasOwnProperty(window.location.pathname)
-        ? pathname[window.location.pathname].selectedIndex
-        : 0
-    );
-  }, []);
+    [...menuOptions, ...routes].forEach((route) => {
+      switch (window.location.pathname) {
+        case `${route.link}`:
+          if (value !== route.activeIndex) {
+            setValue(route.activeIndex);
+            if (route.selectedIndex && route.selectedIndex !== selectedIndex) {
+              setSelectedIndex(route.selectedIndex);
+            }
+          }
+          break;
+        default:
+          break;
+      }
+    });
+
+    // const pathname = {
+    //   "/": { value: 0 },
+    //   "/services": { value: 1, selectedIndex: 0 },
+    //   "/computersoftware": { value: 1, selectedIndex: 1 },
+    //   "/mobileapps": { value: 1, selectedIndex: 2 },
+    //   "/websites": { value: 1, selectedIndex: 3 },
+    //   "/revolution": { value: 2 },
+    //   "/about": { value: 3 },
+    //   "/contact": { value: 4 },
+    // };
+    // setValue(
+    //   pathname.hasOwnProperty(window.location.pathname)
+    //     ? pathname[window.location.pathname].value
+    //     : 0
+    // );
+    // setSelectedIndex(
+    //   pathname.hasOwnProperty(window.location.pathname)
+    //     ? pathname[window.location.pathname].selectedIndex
+    //     : 0
+    // );
+  }, [menuOptions, routes, value, selectedIndex]);
 
   const tabs = (
     <React.Fragment>
