@@ -85,6 +85,16 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
   },
+  drawer: {
+    backgroundColor: theme.palette.common.blue,
+  },
+  drawerItem: {
+    ...theme.typography.tab,
+    color: "white",
+  },
+  drawerItemEstimate: {
+    backgroundColor: theme.palette.common.orange,
+  },
 }));
 
 export default function Header(props) {
@@ -226,9 +236,11 @@ export default function Header(props) {
         open={openDrawer}
         onClose={() => setOpenDrawer(false)}
         onOpen={() => setOpenDrawer(true)}
+        classes={{ paper: classes.drawer }}
       >
         <List disablePadding>
           <ListItem
+            className={classes.drawerItem}
             onClick={() => setOpenDrawer(false)}
             divider
             button
@@ -239,6 +251,7 @@ export default function Header(props) {
             <ListItemText>Home</ListItemText>
           </ListItem>
           <ListItem
+            className={classes.drawerItem}
             onClick={() => setOpenDrawer(false)}
             divider
             button
@@ -249,6 +262,7 @@ export default function Header(props) {
             <ListItemText>Services</ListItemText>
           </ListItem>
           <ListItem
+            className={classes.drawerItem}
             onClick={() => setOpenDrawer(false)}
             divider
             button
@@ -259,6 +273,7 @@ export default function Header(props) {
             <ListItemText>About Us</ListItemText>
           </ListItem>
           <ListItem
+            className={classes.drawerItem}
             onClick={() => setOpenDrawer(false)}
             divider
             button
@@ -269,6 +284,7 @@ export default function Header(props) {
             <ListItemText>Contact Us</ListItemText>
           </ListItem>
           <ListItem
+            className={[classes.drawerItem, classes.drawerItemEstimate]}
             onClick={() => setOpenDrawer(false)}
             divider
             button
