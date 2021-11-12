@@ -241,67 +241,91 @@ export default function Header(props) {
         <List disablePadding>
           <ListItem
             className={classes.drawerItem}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(0);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/"
+            selected={value === 0}
           >
             <ListItemText>Home</ListItemText>
           </ListItem>
           <ListItem
             className={classes.drawerItem}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(1);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/services"
+            selected={value === 1}
           >
             <ListItemText>Services</ListItemText>
           </ListItem>
           <ListItem
             className={classes.drawerItem}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(2);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/revolution"
+            selected={value === 2}
           >
             <ListItemText>The Revolution</ListItemText>
           </ListItem>
           <ListItem
             className={classes.drawerItem}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(3);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/about"
+            selected={value === 3}
           >
             <ListItemText>About Us</ListItemText>
           </ListItem>
           <ListItem
             className={classes.drawerItem}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(4);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/contact"
+            selected={value === 4}
           >
             <ListItemText>Contact Us</ListItemText>
           </ListItem>
           <ListItem
             className={[classes.drawerItem, classes.drawerItemEstimate]}
-            onClick={() => setOpenDrawer(false)}
+            onClick={() => {
+              setOpenDrawer(false);
+              setValue(5);
+            }}
             divider
             button
             disableTypography
             component={Link}
             to="/estimate"
+            selected={value === 5}
           >
             <ListItemText>Free Estimate</ListItemText>
           </ListItem>
